@@ -1,0 +1,160 @@
+﻿/*==========LAYOUT SECTION===========*/
+
+
+body
+{
+    background-color: black;
+    margin: 0px;
+    font-family: Arial, Georgia;
+    width: 100%;
+}
+
+.DisplayNone
+{
+    display: none;
+}
+#stats
+{
+    margin-left:35px;
+    margin-bottom: 15px;
+    
+}
+
+#FirstDayCounts
+{
+        
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: 18px;
+    padding-top: 10px;
+  
+
+}
+
+#Counts
+{
+        
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    padding-top: 10px;
+    font-size: 18px;
+
+}
+
+#Percent
+{
+        
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    padding-top: 10px;
+    font-size: 18px;
+
+}
+
+#OnHoldLabel
+{
+    color:#f9e4c5;
+}
+
+#OnHold
+{
+    margin-bottom: 25px;
+}
+
+    #OnHold td
+    {
+        background-color: #f9e4c5;     
+    }
+
+#RequestsLabel
+{
+    color:lemonchiffon;
+}
+#Requests
+{
+    margin-bottom: 25px;
+}
+    #Requests td
+    {
+        background-color: lemonchiffon;
+    }
+
+#ReadyLabel
+{
+    color: #caf0d5
+}
+#Ready
+{
+    margin-bottom: 25px;
+}
+    #Ready td
+    {
+        background-color: #caf0d5;
+    }
+
+#ShippedLabel
+{
+    color: #c4e2f5
+}
+#Shipped
+{
+    margin-bottom: 25px;
+}
+    #Shipped td
+    {
+        background-color:#c4e2f5;
+    }
+
+.gridview
+{
+    font-size: 16px;
+}
+
+    .gridview th
+    {
+        height: 15px;
+        padding: 3px 3px;
+        text-align: left;
+        font-weight: bold;
+        border-bottom: solid 1px #747474;
+        background-color: #555555;
+        color: #eeeeee;
+    }
+
+    .gridview td
+    {
+        padding: 5px 3px;
+        position: relative;
+    }
+
+        .gridview td.number
+        {
+            text-align: right;
+        }
+
+        .gridview td.image
+        {
+            text-align: right;
+        }
+
+        .gridview td.date
+        {
+        }
+
+        .gridview td.boolean
+        {
+            text-align: center;
+        }
+
+
+/*==========HEADINGS SECTION===========*/
+h1
+{
+    font-size: 12px;
+    color: white;
+    margin: 10px 10px 10px 10px;
+    font-weight:bold;
+}
