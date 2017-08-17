@@ -67,6 +67,24 @@ namespace OrderReport {
         protected global::System.Web.UI.WebControls.Label Percent;
         
         /// <summary>
+        /// OnHoldUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel OnHoldUpdatePanel;
+        
+        /// <summary>
+        /// GridViewOneTimer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer GridViewOneTimer;
+        
+        /// <summary>
         /// OnHoldLabel control.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,24 @@ namespace OrderReport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// RequestsUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel RequestsUpdatePanel;
+        
+        /// <summary>
+        /// GridViewTwoTimer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer GridViewTwoTimer;
         
         /// <summary>
         /// RequestsLabel control.
@@ -121,6 +157,24 @@ namespace OrderReport {
         protected global::System.Web.UI.WebControls.GridView GridView2;
         
         /// <summary>
+        /// ReadyUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel ReadyUpdatePanel;
+        
+        /// <summary>
+        /// GridViewThreeTimer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer GridViewThreeTimer;
+        
+        /// <summary>
         /// ReadyLabel control.
         /// </summary>
         /// <remarks>
@@ -146,6 +200,24 @@ namespace OrderReport {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView3;
+        
+        /// <summary>
+        /// ShippedUpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel ShippedUpdatePanel;
+        
+        /// <summary>
+        /// GridViewFourTimer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer GridViewFourTimer;
         
         /// <summary>
         /// ShippedLabel control.

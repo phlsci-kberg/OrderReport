@@ -155,5 +155,24 @@ namespace OrderReport
                 Percent.Text = perc.ToString() + "% of orders shipped First Day";
             }
         }
+
+        // New methods for timers. Adjust as needed.
+        protected void GridViewOneTimer_Tick(object sender, EventArgs e)
+        {
+            GridView1.DataBind();
+        }
+        protected void GridViewTwoTimer_Tick(object sender, EventArgs e)
+        {
+            GridView2.DataBind();
+        }
+        protected void GridViewThreeTimer_Tick(object sender, EventArgs e)
+        {
+            GridView3.DataBind();
+        }
+
+        protected void GridViewFourTimer_Tick(object sender, EventArgs e)
+        {
+            GridView4.DataBind();
+        }
     }
 }

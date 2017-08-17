@@ -6,7 +6,7 @@
 <head runat="server">
     <link href="Styles/Global.css" rel="stylesheet" />
     <title>Order Status Reort</title>
-    <meta http-equiv="Refresh" content="60;url" />
+    <!-- meta http-equiv="Refresh" content="60;url" / -->
 </head>
 
 
@@ -22,222 +22,257 @@
             <asp:Label ID="Percent" runat="server" Text="Label3" BackColor="White" ForeColor="Black" Width="3.5in" Height=".35in"></asp:Label>
         </div>
 
-        <div id="OnHold">
-            <asp:Label ID="OnHoldLabel" runat="server" Text="On Hold"></asp:Label>
-            <asp:SqlDataSource ID="SqlDataSource1" OnDataBinding="Page_Load" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid1_OnHold" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-            <asp:GridView
-                ID="GridView1"
-                runat="server"
-                AutoGenerateColumns="False"
-                DataSourceID="SqlDataSource1"
-                GridLines="None"
-                CssClass="gridview"
-                OnRowDataBound="GridView1_RowDataBound">
-                <Columns>
-                    <asp:BoundField DataField="No_" HeaderText="Order No." ItemStyle-Width="1.10223in">
-                        <ItemStyle Width="1in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Image ID="Image3" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" ItemStyle-Width="1.04813in">
-                        <ItemStyle Width="1.04813in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" ItemStyle-Width="1.71131in">
+         <!-- start of new content -->
+        <asp:UpdatePanel ID="OnHoldUpdatePanel" runat="server">
+            <ContentTemplate>
+                <asp:Timer ID="GridViewOneTimer" runat="server" Interval="3600" OnTick="GridViewOneTimer_Tick"></asp:Timer>
+                <!-- end of new content -->
+                <div id="OnHold">
+                    <asp:Label ID="OnHoldLabel" runat="server" Text="On Hold"></asp:Label>
+                    <asp:SqlDataSource ID="SqlDataSource1" OnDataBinding="Page_Load" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid1_OnHold" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:GridView
+                        ID="GridView1"
+                        runat="server"
+                        AutoGenerateColumns="False"
+                        DataSourceID="SqlDataSource1"
+                        GridLines="None"
+                        CssClass="gridview"
+                        OnRowDataBound="GridView1_RowDataBound">
+                        <Columns>
+                            <asp:BoundField DataField="No_" HeaderText="Order No." ItemStyle-Width="1.10223in">
+                                <ItemStyle Width="1in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image3" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" ItemStyle-Width="1.04813in">
+                                <ItemStyle Width="1.04813in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" ItemStyle-Width="1.71131in">
 
-                        <ItemStyle Width="1.71131in"></ItemStyle>
-                    </asp:BoundField>
+                                <ItemStyle Width="1.71131in"></ItemStyle>
+                            </asp:BoundField>
 
-                    <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.92708in">
-                        <ItemStyle Width="0.92708in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
+                            <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.92708in">
+                                <ItemStyle Width="0.92708in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
 
-                        <ItemStyle Width="1.05208in"></ItemStyle>
-                    </asp:BoundField>
+                                <ItemStyle Width="1.05208in"></ItemStyle>
+                            </asp:BoundField>
 
-                    <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.95597in">
-                        <ItemStyle Width="0.95597in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.25in">
-                        <ItemStyle Width="1.25in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="LateWF" HeaderText="" ReadOnly="True" ItemStyle-Width="0.20164in">
-                        <ItemStyle Width="0.20164in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" ItemStyle-Width="2.4985in">
-                        <ItemStyle Width="2.4985in"></ItemStyle>
-                    </asp:BoundField>
+                            <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.95597in">
+                                <ItemStyle Width="0.95597in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.25in">
+                                <ItemStyle Width="1.25in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="LateWF" HeaderText="" ReadOnly="True" ItemStyle-Width="0.20164in">
+                                <ItemStyle Width="0.20164in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" ItemStyle-Width="2.4985in">
+                                <ItemStyle Width="2.4985in"></ItemStyle>
+                            </asp:BoundField>
 
-                </Columns>
-            </asp:GridView>
-        </div>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+                <!-- new content -->
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <!-- end new content -->
 
+        <!-- start of new content -->
+        <asp:UpdatePanel ID="RequestsUpdatePanel" runat="server">
+            <ContentTemplate>
+                <asp:Timer ID="GridViewTwoTimer" runat="server" Interval="1800" OnTick="GridViewTwoTimer_Tick"></asp:Timer>
+                <!-- end of new content -->
+                <div id="Requests">
+                    <asp:Label ID="RequestsLabel" runat="server" Text="Requests"></asp:Label>
+                    <asp:SqlDataSource ID="SqlDataSource2" OnDataBinding="Page_Load" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid2_Requests" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:GridView
+                        ID="GridView2"
+                        runat="server"
+                        AutoGenerateColumns="False"
+                        DataSourceID="SqlDataSource2"
+                        GridLines="None"
+                        CssClass="gridview"
+                        OnRowDataBound="GridView2_RowDataBound">
+                        <Columns>
+                            <asp:BoundField DataField="No_" HeaderText="Order No." ItemStyle-Width="1.10223in">
+                                <ItemStyle Width="1in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image3" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" ItemStyle-Width="1.04813in">
+                                <ItemStyle Width="1.04813in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" ItemStyle-Width="1.71131in">
 
-        <div id="Requests">
-            <asp:Label ID="RequestsLabel" runat="server" Text="Requests"></asp:Label>
-            <asp:SqlDataSource ID="SqlDataSource2" OnDataBinding="Page_Load" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid2_Requests" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-            <asp:GridView
-                ID="GridView2"
-                runat="server"
-                AutoGenerateColumns="False"
-                DataSourceID="SqlDataSource2"
-                GridLines="None"
-                CssClass="gridview"
-                OnRowDataBound="GridView2_RowDataBound">
-                <Columns>
-                    <asp:BoundField DataField="No_" HeaderText="Order No." ItemStyle-Width="1.10223in">
-                        <ItemStyle Width="1in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Image ID="Image3" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" ItemStyle-Width="1.04813in">
-                        <ItemStyle Width="1.04813in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" ItemStyle-Width="1.71131in">
+                                <ItemStyle Width="1.71131in"></ItemStyle>
+                            </asp:BoundField>
 
-                        <ItemStyle Width="1.71131in"></ItemStyle>
-                    </asp:BoundField>
+                            <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.92708in">
+                                <ItemStyle Width="0.92708in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
 
-                    <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.92708in">
-                        <ItemStyle Width="0.92708in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
+                                <ItemStyle Width="1.05208in"></ItemStyle>
+                            </asp:BoundField>
 
-                        <ItemStyle Width="1.05208in"></ItemStyle>
-                    </asp:BoundField>
+                            <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.95597in">
+                                <ItemStyle Width="0.95597in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.25in">
+                                <ItemStyle Width="1.25in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="LateWF" HeaderText="" ReadOnly="True" ItemStyle-Width="0.20164in">
+                                <ItemStyle Width="0.20164in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" ItemStyle-Width="2.4985in">
+                                <ItemStyle Width="2.4985in"></ItemStyle>
+                            </asp:BoundField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            <!-- new content -->
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <!-- end new content -->
 
-                    <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" ItemStyle-Width="0.95597in">
-                        <ItemStyle Width="0.95597in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.25in">
-                        <ItemStyle Width="1.25in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="LateWF" HeaderText="" ReadOnly="True" ItemStyle-Width="0.20164in">
-                        <ItemStyle Width="0.20164in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" ItemStyle-Width="2.4985in">
-                        <ItemStyle Width="2.4985in"></ItemStyle>
-                    </asp:BoundField>
-                </Columns>
-            </asp:GridView>
-        </div>
+        <!-- start of new content -->
+        <asp:UpdatePanel ID="ReadyUpdatePanel" runat="server">
+            <ContentTemplate>
+                <asp:Timer ID="GridViewThreeTimer" runat="server" Interval="1800" OnTick="GridViewThreeTimer_Tick"></asp:Timer>
+                <!-- end of new content -->
+                <div id="Ready">
+                    <asp:Label ID="ReadyLabel" runat="server" Text="Ready"></asp:Label>
+                    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid3_Ready" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:GridView
+                        ID="GridView3"
+                        runat="server"
+                        AutoGenerateColumns="False"
+                        DataSourceID="SqlDataSource3"
+                        GridLines="None"
+                        CssClass="gridview"
+                        OnRowDataBound="GridView3_RowDataBound">
+                        <Columns>
+                            <asp:BoundField DataField="No_" HeaderText="Order No." SortExpression="No_" ItemStyle-Width="1.10223in">
+                                <ItemStyle Width="1.10223in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image5" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" SortExpression="Sell-to Customer No_" ItemStyle-Width="1.04813in">
+                                <ItemStyle Width="1.04813in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" SortExpression="Shipping Method" ItemStyle-Width="1.71131in">
+                                <ItemStyle Width="1.71131in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Order Date Time" ItemStyle-Width="0.92708in">
+                                <ItemStyle Width="0.92708in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
+                                <ItemStyle Width="1.05208in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Target Ship Date" ItemStyle-Width="0.95597in">
+                                <ItemStyle Width="0.95597in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.10in">
+                                <ItemStyle Width="1.1in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="LateWF" HeaderText="" ReadOnly="True" SortExpression="Late WF" ItemStyle-Width="0.20164in">
+                                <ItemStyle Width="0.20164in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" SortExpression="Order Status Note" ItemStyle-Width="2.4985in">
+                                <ItemStyle Width="2.4985in"></ItemStyle>
+                            </asp:BoundField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            <!-- new content -->
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <!-- end new content -->
 
-        <div id="Ready">
-            <asp:Label ID="ReadyLabel" runat="server" Text="Ready"></asp:Label>
-            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid3_Ready" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-            <asp:GridView
-                ID="GridView3"
-                runat="server"
-                AutoGenerateColumns="False"
-                DataSourceID="SqlDataSource3"
-                GridLines="None"
-                CssClass="gridview"
-                OnRowDataBound="GridView3_RowDataBound">
-                <Columns>
-                    <asp:BoundField DataField="No_" HeaderText="Order No." SortExpression="No_" ItemStyle-Width="1.10223in">
-                        <ItemStyle Width="1.10223in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Image ID="Image5" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" SortExpression="Sell-to Customer No_" ItemStyle-Width="1.04813in">
-                        <ItemStyle Width="1.04813in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" SortExpression="Shipping Method" ItemStyle-Width="1.71131in">
-                        <ItemStyle Width="1.71131in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Order Date Time" ItemStyle-Width="0.92708in">
-                        <ItemStyle Width="0.92708in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
-                        <ItemStyle Width="1.05208in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Target Ship Date" ItemStyle-Width="0.95597in">
-                        <ItemStyle Width="0.95597in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.10in">
-                        <ItemStyle Width="1.1in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="LateWF" HeaderText="" ReadOnly="True" SortExpression="Late WF" ItemStyle-Width="0.20164in">
-                        <ItemStyle Width="0.20164in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" SortExpression="Order Status Note" ItemStyle-Width="2.4985in">
-                        <ItemStyle Width="2.4985in"></ItemStyle>
-                    </asp:BoundField>
-                </Columns>
-            </asp:GridView>
-        </div>
-
-        <div id="Shipped">
-            <asp:Label ID="ShippedLabel" runat="server" Text="Shipped"></asp:Label>
-            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid4_Shipped" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-            <asp:GridView
-                ID="GridView4"
-                runat="server"
-                AutoGenerateColumns="False"
-                DataSourceID="SqlDataSource4"
-                GridLines="None"
-                CssClass="gridview" OnRowDataBound="GridView4_RowDataBound" ShowFooter="True">
+        <!-- start of new content -->
+        <asp:UpdatePanel ID="ShippedUpdatePanel" runat="server">
+            <ContentTemplate>
+                <asp:Timer ID="GridViewFourTimer" runat="server" Interval="3600" OnTick="GridViewFourTimer_Tick"></asp:Timer>
+                <!-- end of new content -->
+                <div id="Shipped">
+                    <asp:Label ID="ShippedLabel" runat="server" Text="Shipped"></asp:Label>
+                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ORCS %>" SelectCommand="sp_kpb_Order_Status_Grid4_Shipped" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:GridView
+                        ID="GridView4"
+                        runat="server"
+                        AutoGenerateColumns="False"
+                        DataSourceID="SqlDataSource4"
+                        GridLines="None"
+                        CssClass="gridview" OnRowDataBound="GridView4_RowDataBound" ShowFooter="True">
                 
-                <Columns>
-                    <asp:BoundField DataField="No_" HeaderText="Order No." SortExpression="No_" ItemStyle-Width="1.10223in">
-                        <ItemStyle Width="1.10223in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Image ID="Image4" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" SortExpression="Sell-to Customer No_" ItemStyle-Width="1.04813in">
-                        <ItemStyle Width="1.04813in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" SortExpression="Shipping Method" ItemStyle-Width="1.71131in">
-                        <ItemStyle Width="1.71131in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Order Date Time" ItemStyle-Width="0.92708in">
-                        <ItemStyle Width="0.92708in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
-                        <ItemStyle Width="1.05208in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Target Ship Date" ItemStyle-Width="0.95597in">
-                        <ItemStyle Width="0.95597in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.10in">
-                        <ItemStyle Width="1.1in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Can Ship" SortExpression="Can Ship" ItemStyle-Width="0.20164in">
-                        <ItemStyle Width="0.20164in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" SortExpression="Order Status Note" ItemStyle-Width="2.4985in">
-                        <ItemStyle Width="2.4985in"></ItemStyle>
-                    </asp:BoundField>
-                    <asp:BoundField DataField="Late" HeaderText="Late" SortExpression="Late" 
-                        ItemStyle-CssClass="DisplayNone" HeaderStyle-CssClass="DisplayNone">
-<HeaderStyle CssClass="DisplayNone"></HeaderStyle>
+                        <Columns>
+                            <asp:BoundField DataField="No_" HeaderText="Order No." SortExpression="No_" ItemStyle-Width="1.10223in">
+                                <ItemStyle Width="1.10223in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Image ID="Image4" runat="server" ImageUrl='<%# Eval("CheckMark") %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Sell-to Customer No_" HeaderText="Cust ID" SortExpression="Sell-to Customer No_" ItemStyle-Width="1.04813in">
+                                <ItemStyle Width="1.04813in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Shipping Method" HeaderText="Shipping Agent" ReadOnly="True" SortExpression="Shipping Method" ItemStyle-Width="1.71131in">
+                                <ItemStyle Width="1.71131in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Date Time" HeaderText="Order Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Order Date Time" ItemStyle-Width="0.92708in">
+                                <ItemStyle Width="0.92708in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Time" HeaderText="Order Time" ReadOnly="True" SortExpression="Order Time" ItemStyle-Width="1.05208in">
+                                <ItemStyle Width="1.05208in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Target Ship Date" HeaderText="Target Date" DataFormatString="{0:MM/dd}" ReadOnly="True" SortExpression="Target Ship Date" ItemStyle-Width="0.95597in">
+                                <ItemStyle Width="0.95597in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Time" HeaderText="Time Elapsed" ReadOnly="True" SortExpression="Time" ItemStyle-Width="1.10in">
+                                <ItemStyle Width="1.1in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Can Ship" SortExpression="Can Ship" ItemStyle-Width="0.20164in">
+                                <ItemStyle Width="0.20164in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Order Status Note" HeaderText="Order Status Note" SortExpression="Order Status Note" ItemStyle-Width="2.4985in">
+                                <ItemStyle Width="2.4985in"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Late" HeaderText="Late" SortExpression="Late" 
+                                ItemStyle-CssClass="DisplayNone" HeaderStyle-CssClass="DisplayNone">
+        <HeaderStyle CssClass="DisplayNone"></HeaderStyle>
 
-<ItemStyle CssClass="DisplayNone"></ItemStyle>
-                   </asp:BoundField>
+        <ItemStyle CssClass="DisplayNone"></ItemStyle>
+                           </asp:BoundField>
                     
-                    <asp:BoundField DataField="First Days" HeaderText="First Days" SortExpression="First Days" 
-                        ItemStyle-CssClass="DisplayNone" HeaderStyle-CssClass="DisplayNone">
-<HeaderStyle CssClass="DisplayNone"></HeaderStyle>
+                            <asp:BoundField DataField="First Days" HeaderText="First Days" SortExpression="First Days" 
+                                ItemStyle-CssClass="DisplayNone" HeaderStyle-CssClass="DisplayNone">
+        <HeaderStyle CssClass="DisplayNone"></HeaderStyle>
 
-<ItemStyle CssClass="DisplayNone"></ItemStyle>
-                    </asp:BoundField>
+        <ItemStyle CssClass="DisplayNone"></ItemStyle>
+                            </asp:BoundField>
                     
-                </Columns>
-            </asp:GridView>
+                        </Columns>
+                    </asp:GridView>
 
-        </div>
+                </div>
+            <!-- new content -->
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <!-- end new content -->
 <div id="leg">
     <img src="images/legend.png" />
 
